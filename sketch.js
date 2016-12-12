@@ -10,7 +10,7 @@ var running = 0;
 function setup() {
   var canvas = createCanvas(800,800);
   canvas.parent('sketch-holder');
-  mainGrid = new makeGrid(30);
+  mainGrid = new makeGrid(64);
   mainGrid.init();
 
 }
