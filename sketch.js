@@ -35,7 +35,7 @@ function draw() {
   }
 
   //FPS
-  frameRate(10);
+  frameRate(15);
 
 }
 
