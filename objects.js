@@ -8,7 +8,7 @@ function makeGrid(gridSize) {
   this.grid = [];
   this.grid2 = [];
   this.buttons = [];
-  this.bordersize=1;
+  this.bordersize=0.5;
   this.blockSize=floor(width/gridSize);
 
   //initialises grid to be all 0s
