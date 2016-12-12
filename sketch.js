@@ -3,8 +3,8 @@ var released = 1;
 var running = 0;
 
 function setup() {
-  createCanvas(300,300);
-  mainGrid = new makeGrid(12);
+  createCanvas(800,800);
+  mainGrid = new makeGrid(64);
   mainGrid.init();
 }
 

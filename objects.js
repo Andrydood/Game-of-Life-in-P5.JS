@@ -2,6 +2,7 @@ function makeGrid(gridSize) {
 
   this.gridSize = gridSize;
   this.grid = [];
+  this.grid2 = [];
   this.buttons = [];
   this.bordersize=1;
   this.blockSize=floor(width/gridSize);
@@ -64,7 +65,6 @@ function makeGrid(gridSize) {
                 }
                 else{
                   this.grid[i*this.gridSize+j]=1;
-
                 }
 
               }
@@ -77,51 +77,15 @@ function makeGrid(gridSize) {
 
   this.checkCells = function(){
 
-    var population = 0;
-    var newGrid = this.grid;
+    for(i=0;i<this.gridSize*this.gridSize;i++){
+
+        this.grid2[i]=this.grid[i];
+
+    }
+
     for(i=0;i<this.gridSize;i++){
         for(j=0;j<this.gridSize;j++){
 
-          if(i==0 && j==0){
-            population=this.grid[(i)*this.gridSize+j+1]+
-                        this.grid[(i+1)*this.gridSize+j]+
-                        this.grid[(i+1)*this.gridSize+j+1];
-          }
-          else if(i==0){
-            population=  this.grid[(i)*this.gridSize+j-1]+
-                        this.grid[(i)*this.gridSize+j+1]+
-                        this.grid[(i+1)*this.gridSize+j-1]+
-                        this.grid[(i+1)*this.gridSize+j]+
-                        this.grid[(i+1)*this.gridSize+j+1];
-          }
-          else if(j==0){
-            population=this.grid[(i-1)*this.gridSize+j]+
-                        this.grid[(i-1)*this.gridSize+j+1]+
-                        this.grid[(i)*this.gridSize+j+1]+
-                        this.grid[(i+1)*this.gridSize+j]+
-                        this.grid[(i+1)*this.gridSize+j+1];
-
-          }
-          else if (i==this.gridSize && j==this.gridSize){
-            population=this.grid[(i-1)*this.gridSize+j-1]+
-                        this.grid[(i-1)*this.gridSize+j]+
-                        this.grid[(i)*this.gridSize+j-1];
-          }
-          else if (i==this.gridSize){
-            population=this.grid[(i-1)*this.gridSize+j-1]+
-                        this.grid[(i-1)*this.gridSize+j]+
-                        this.grid[(i-1)*this.gridSize+j+1]+
-                        this.grid[(i)*this.gridSize+j-1]+
-                        this.grid[(i)*this.gridSize+j+1];
-
-          }
-          else if (j==this.gridSize){
-            population=this.grid[(i-1)*this.gridSize+j-1]+
-                        this.grid[(i-1)*this.gridSize+j]+
-                        this.grid[(i)*this.gridSize+j-1]+
-                        this.grid[(i+1)*this.gridSize+j-1]+
-                        this.grid[(i+1)*this.gridSize+j];          }
-          else{
           population=this.grid[(i-1)*this.gridSize+j-1]+
                       this.grid[(i-1)*this.gridSize+j]+
                       this.grid[(i-1)*this.gridSize+j+1]+
@@ -130,27 +94,31 @@ function makeGrid(gridSize) {
                       this.grid[(i+1)*this.gridSize+j-1]+
                       this.grid[(i+1)*this.gridSize+j]+
                       this.grid[(i+1)*this.gridSize+j+1];
-                    }
 
-        console.log(i, population);
+
         if(population<2) {
-          newGrid[i*this.gridSize+j]=0;
+          this.grid2[i*this.gridSize+j]=0;
         }
         else if(population==2) {
-          newGrid[i*this.gridSize+j]=this.grid[i*this.gridSize+j];
+          this.grid2[i*this.gridSize+j]=this.grid[i*this.gridSize+j];
         }
         else if(population==3) {
-          newGrid[i*this.gridSize+j]=1;
+          this.grid2[i*this.gridSize+j]=1;
         }
         else if(population>3) {
-          newGrid[i*this.gridSize+j]=0;
+          this.grid2[i*this.gridSize+j]=0;
         }
-        }
+
 
       }
 
-      this.grid=newGrid;
+  }
+
+  for(i=0;i<this.gridSize*this.gridSize;i++){
+
+      this.grid[i]=this.grid2[i];
 
   }
 
+}
 }
