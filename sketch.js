@@ -8,20 +8,23 @@ var running = 0;
 
 //set up canvas
 function setup() {
-  createCanvas(800,800);
+  var canvas = createCanvas(800,800);
+  canvas.parent('sketch-holder');
   mainGrid = new makeGrid(30);
   mainGrid.init();
+
 }
 
 function draw() {
   //redraw background
-  background(255);
+  background(0);
 
   //display grid
   mainGrid.display();
 
   //check what box is clicked
   if(mouseIsPressed && released){
+    running = 0;
     mainGrid.checkClick();
     released = 0;
   }

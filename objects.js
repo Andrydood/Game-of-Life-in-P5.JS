@@ -29,12 +29,7 @@ function makeGrid(gridSize) {
         for(j=0;j<this.gridSize;j++){
 
           //Displays black background
-          fill(0);
-          quad(i*this.blockSize,j*this.blockSize,
-            (i+1)*this.blockSize,j*this.blockSize,
-            (i+1)*this.blockSize,(j+1)*this.blockSize,
-            i*this.blockSize,(j+1)*this.blockSize);
-
+        
             //Checks if square is alive or dead
           if(this.grid[i*this.gridSize+j]==0){
             fill(150);
