@@ -17,6 +17,16 @@ function makeGrid(gridSize) {
         this.grid[i]=0;
 
     }
+
+    for(i=0;i<this.gridSize;i++){
+        for(j=0;j<this.gridSize;j++){
+        //Defines square area
+        this.buttons.push(i*this.blockSize+this.bordersize,j*this.blockSize+this.bordersize,
+          (i+1)*this.blockSize-this.bordersize,j*this.blockSize+this.bordersize,
+          (i+1)*this.blockSize-this.bordersize,(j+1)*this.blockSize-this.bordersize,
+          i*this.blockSize+this.bordersize,(j+1)*this.blockSize-this.bordersize);
+          }
+        }
   }
 
 
@@ -41,13 +51,6 @@ function makeGrid(gridSize) {
             (i+1)*this.blockSize-this.bordersize,j*this.blockSize+this.bordersize,
             (i+1)*this.blockSize-this.bordersize,(j+1)*this.blockSize-this.bordersize,
             i*this.blockSize+this.bordersize,(j+1)*this.blockSize-this.bordersize);
-
-            //Defines square area
-            this.buttons.push(i*this.blockSize+this.bordersize,j*this.blockSize+this.bordersize,
-              (i+1)*this.blockSize-this.bordersize,j*this.blockSize+this.bordersize,
-              (i+1)*this.blockSize-this.bordersize,(j+1)*this.blockSize-this.bordersize,
-              i*this.blockSize+this.bordersize,(j+1)*this.blockSize-this.bordersize);
-
 
         }
     }
