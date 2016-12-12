@@ -6,7 +6,6 @@ function makeGrid(gridSize) {
 
   this.gridSize = gridSize;
   this.grid = [];
-  this.grid2 = [];
   this.buttons = [];
   this.bordersize=0.5;
   this.blockSize=floor(width/gridSize);
@@ -29,7 +28,7 @@ function makeGrid(gridSize) {
         for(j=0;j<this.gridSize;j++){
 
           //Displays black background
-        
+
             //Checks if square is alive or dead
           if(this.grid[i*this.gridSize+j]==0){
             fill(150);
@@ -86,10 +85,12 @@ function makeGrid(gridSize) {
 
   this.checkCells = function(){
 
+    var grid2=[];
+
     //make copy of living and dead cells
     for(i=0;i<this.gridSize*this.gridSize;i++){
 
-        this.grid2[i]=this.grid[i];
+        grid2[i]=this.grid[i];
 
     }
 
@@ -167,16 +168,16 @@ function makeGrid(gridSize) {
         //saves answer on copy so that the current changes don't affect population
         //calculation
         if(population<2) {
-          this.grid2[i*this.gridSize+j]=0;
+          grid2[i*this.gridSize+j]=0;
         }
         else if(population==2) {
-          this.grid2[i*this.gridSize+j]=this.grid[i*this.gridSize+j];
+          grid2[i*this.gridSize+j]=this.grid[i*this.gridSize+j];
         }
         else if(population==3) {
-          this.grid2[i*this.gridSize+j]=1;
+          grid2[i*this.gridSize+j]=1;
         }
         else if(population>3) {
-          this.grid2[i*this.gridSize+j]=0;
+          grid2[i*this.gridSize+j]=0;
         }
 
 
@@ -187,7 +188,7 @@ function makeGrid(gridSize) {
   //copy changes onto main grid
   for(i=0;i<this.gridSize*this.gridSize;i++){
 
-      this.grid[i]=this.grid2[i];
+      this.grid[i]=grid2[i];
 
   }
 
